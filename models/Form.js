@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const formSchema = new Schema({
+    listName: String,
     name: String,
     showEmail: Boolean,
     showPhone: Boolean,

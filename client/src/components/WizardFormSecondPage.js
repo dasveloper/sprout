@@ -10,7 +10,8 @@ import {
   Header,
   Dropdown,
   Form,
-  Checkbox
+  Checkbox,
+  Button
 } from "semantic-ui-react";
 
 const renderError = ({ meta: { touched, error } }) =>
@@ -26,7 +27,7 @@ const ToggleFormField = props => (
   </div>
 );
 const WizardFormSecondPage = props => {
-  const { handleSubmit, previousPage } = props;
+  const { handleSubmit, pristine, previousPage, submitting } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -110,12 +111,12 @@ const WizardFormSecondPage = props => {
           </div>
         </Card.Description>
         <Card.Content extra>
-          <button type="button" className="previous" onClick={previousPage}>
-            Previous
-          </button>
-          <button type="submit" className="next">
+        <Button type="button"  className="previous" onClick={previousPage} basic>
+          Previous
+          </Button>
+          <Button type="submit"  className="submit-form" disabled={pristine || submitting}>
             Submit
-          </button>
+          </Button>
         </Card.Content>
       </Card>
     </form>

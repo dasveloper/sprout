@@ -10,7 +10,8 @@ import {
   Segment,
   Header,
   Dropdown,
-  Form
+  Form,
+  Button
 } from "semantic-ui-react";
 
 const options = [
@@ -53,7 +54,7 @@ const ReasonField = props => (
   />
 );
 const WizardFormFirstPage = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, previousPage } = props;
 
   return (
     <form className="create-form" onSubmit={handleSubmit}>
@@ -75,9 +76,13 @@ const WizardFormFirstPage = props => {
           </div>
         </Card.Description>
         <Card.Content extra>
-          <button type="submit" className="next">
+
+          <Button type="button"  className="previous" onClick={previousPage} basic>
+          Previous
+          </Button>
+          <Button type="submit"  className="next">
             Next
-          </button>
+          </Button>
         </Card.Content>
       </Card>
     </form>
@@ -88,12 +93,5 @@ export default reduxForm({
   form: "wizard", //                 <------ same form name
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  validate,
-  initialValues: {
-    isPlural: false,
-    showName: true,
-    showEmail: true,
-    showPhone: true,
-    showAddress: true
-  }
+  validate
 })(WizardFormFirstPage);

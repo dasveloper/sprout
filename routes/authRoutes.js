@@ -20,8 +20,9 @@ module.exports = app => {
     res.send(req.user);
   });
   //Logout User
-  app.get("/api/logout", (req, res) => {
+  app.get("/auth/logout", (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect("/");
+
   });
 };

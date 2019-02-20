@@ -125,7 +125,24 @@
   margin: 1.5rem 0.25rem;
   text-align: center;
 }
-
+.list-name-header{
+  font-size: 1.6em;
+  line-height: 1.5em;
+  margin: 0rem;
+  text-align: center;
+}
+.list-name-subheader{
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0rem;
+  text-align: center;
+  color: #888;
+}
+.header-row{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
 element.style {
   pointer-events: all;
 }
@@ -281,5 +298,28 @@ text-align: center;
         color: #fff;
       }
     }
+  }
+}
+
+
+//Form
+.ui.button.start{
+  background: #3ecf8e !important;
+  color: #fff !important;
+}
+.ui.button.submit-form{
+  background: #3ecf8e !important;
+  color: #fff !important;
+}
+.ui.button.next{
+  background: #2B8BE0 !important;
+  color: #fff !important;
+}
+
+.extra.content{
+  display: flex;
+  justify-content: space-between;
+  &:after{
+    content: none !important;
   }
 }

@@ -60,7 +60,7 @@ class Dashboard extends Component {
               return (
                 <List.Item key={form._id} style={{ padding: ".5rem" }}>
                   <List.Content style={{ padding: ".5rem" }}>
-                    <h4>Test contact list</h4>
+                    <h4>{form.listName}</h4>
                   </List.Content>
                   <List.Content>
                     <Label className="form-list-label">{form.responses.length}</Label>

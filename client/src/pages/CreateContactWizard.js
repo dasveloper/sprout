@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
+import FormNamePage from "../components/FormNamePage";
 import WizardFormFirstPage from "../components/WizardFormFirstPage";
 import WizardFormSecondPage from "../components/WizardFormSecondPage";
 import WizardFormThirdPage from "../components/WizardFormThirdPage";
@@ -46,14 +47,17 @@ class CreateContactWizard extends Component {
     const { page } = this.state;
     return (
       <Fragment>
-        {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
-        {page === 2 && (
+                {page === 1 && <FormNamePage onSubmit={this.nextPage} />}
+
+        {page === 2 && <WizardFormFirstPage            previousPage={this.previousPage}
+ onSubmit={this.nextPage} />}
+        {page === 3 && (
           <WizardFormSecondPage
             previousPage={this.previousPage}
             onSubmit={createContactList}
           />
         )}
-        {page === 3 && (
+        {page === 4 && (
           <WizardFormThirdPage
             previousPage={this.previousPage}
             onSubmit={createContactList}

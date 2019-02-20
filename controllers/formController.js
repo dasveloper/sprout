@@ -37,6 +37,7 @@ exports.submit_response = function(req, res) {
 };
 exports.create_form = function(req, res) {
   const {
+    listName,
     name,
     showAddress,
     showEmail,
@@ -50,6 +51,7 @@ exports.create_form = function(req, res) {
     if (err) throw new Error(err);
 
     var newForm = new Form({
+      listName: listName,
       name: name,
       showEmail: showEmail,
       showName: showName,

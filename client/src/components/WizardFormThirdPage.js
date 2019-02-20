@@ -15,10 +15,8 @@ const WizardFormThirdPage = props => {
         </div>
       </div>
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+
+
       </div>
     </form>
   );
