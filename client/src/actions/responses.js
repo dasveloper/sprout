@@ -54,16 +54,16 @@ export function fetchResponses(formId) {
           }
         })
         .then(response => {
-            console.log(response);
           dispatch({
             type: "FETCH_RESPONSES_SUCCESS",
             data: response.data
           });
         })
-        .catch(response => {
+        
+        .catch(error => {
           dispatch({
             type: "FETCH_RESPONSES_FAIL",
-            error: response.error
+            error: error.response.data
           });
         });
 

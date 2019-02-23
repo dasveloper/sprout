@@ -5,14 +5,20 @@ import "./assets/App.scss";
 import CreateContactWizard from "./pages/CreateContactWizard";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+import ForgotPassword from "./pages/ForgotPassword";
+
 import Respond from "./pages/Respond";
 import Responses from "./pages/Responses";
 import Nav from "./components/Nav";
+import PageNotFound from "./pages/PageNotFound";
 
 import { connect } from "react-redux";
 import * as actions from "./actions";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 class App extends Component {
   componentDidMount() {
@@ -25,14 +31,20 @@ class App extends Component {
           <div className="nav-wrapper">
             <Nav />
           </div>
-          <div className="container-inner">
-            <Route path="/" exact component={Homepage} />
-            <Route path="/login" component={Login} />
-            <Route path="/create" component={CreateContactWizard} />
-            <Route path="/respond/:formId" component={Respond} />
-            <Route path="/responses/:formId" component={Responses} />
-            <Route path="/dashboard" component={Dashboard} />
+          <div className="container-wrapper">
+            <Switch>
+              <Route path="/" exact component={Homepage} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/forgotPassword" component={ForgotPassword} />
 
+              <Route path="/respond/:formId" component={Respond} />
+
+              <PrivateRoute path="/create" component={CreateContactWizard} />
+              <PrivateRoute path="/responses/:formId" component={Responses} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <Route component={PageNotFound} />
+            </Switch>
           </div>
         </div>
       </Router>

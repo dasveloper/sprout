@@ -1,0 +1,80 @@
+.card-wrapper {
+  .card-inner {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    .card-header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0.5rem 0;
+      .card-header {
+        font-size: 2.2em;
+        line-height: 1.5em;
+        margin: 0rem;
+        text-align: center;
+      }
+      .card-subheader {
+        font-size: 1.4em;
+        line-height: 1.5em;
+        margin: 0rem;
+        text-align: center;
+        color: #a8a8a8;
+      }
+    }
+
+    .card-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0.5rem 0;
+      &.row-spacing{
+        margin: 2rem 0;
+      }
+      &.content-right {
+        justify-content: flex-end;
+      }
+      &.content-spaced {
+        justify-content: space-between;
+      }
+      &.content-left {
+        justify-content: flex-start;
+      }
+      &.content-center {
+        justify-content: center;
+      }
+      &.two-col {
+        > .card-field:first-child, > .card-button {
+          margin-right: 0.25rem;
+        }
+        > .card-field:nth-child(2),  > .card-button{
+          margin-left: 0.25rem;
+        }
+      }
+      .card-field {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .card-field-error{
+          margin-top: .25rem;
+          color: $error;
+        }
+      }
+      .form-error{
+        color: $error;
+        margin-top: .25rem;
+      }     .form-success{
+        color: $success;
+        margin-top: .25rem;
+      }
+      .card-button {
+        margin: 0;
+      }
+    }
+  }
+}

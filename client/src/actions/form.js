@@ -12,7 +12,6 @@ export function fetchForms() {
       axios
         .get("/forms/all")
         .then(response => {
-            console.log(response);
           dispatch({
             type: "FETCH_FORMS_SUCCESS",
             data: response.data

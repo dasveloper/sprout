@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
-import renderField from "./renderField";
+import renderField from "./RenderField";
 import {
   Card,
   Input,
@@ -30,10 +30,10 @@ const WizardFormSecondPage = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Card className="first-card" raised>
-        <Card.Description>
-          <div className="row">
+    <Card fluid className="card-wrapper" raised>
+        <form className="card-inner" onSubmit={handleSubmit}>
+
+        <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
               <div class="type-toggle-left-wrapper">
                 <Icon
@@ -52,7 +52,7 @@ const WizardFormSecondPage = props => {
               />
             </Segment>
           </div>
-          <div className="row">
+          <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
               <div class="type-toggle-left-wrapper">
                 <Icon
@@ -71,7 +71,7 @@ const WizardFormSecondPage = props => {
               />
             </Segment>
           </div>
-          <div className="row">
+          <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
               <div class="type-toggle-left-wrapper">
                 <Icon
@@ -90,7 +90,7 @@ const WizardFormSecondPage = props => {
               />
             </Segment>
           </div>
-          <div className="row">
+          <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
               <div class="type-toggle-left-wrapper">
                 <Icon
@@ -109,17 +109,18 @@ const WizardFormSecondPage = props => {
               />
             </Segment>
           </div>
-        </Card.Description>
-        <Card.Content extra>
+          <div className="card-row content-spaced">
+
         <Button type="button"  className="previous" onClick={previousPage} basic>
           Previous
           </Button>
           <Button type="submit"  className="submit-form" disabled={pristine || submitting}>
             Submit
           </Button>
-        </Card.Content>
+          </div>
+        </form>
+
       </Card>
-    </form>
   );
 };
 

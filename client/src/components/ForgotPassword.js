@@ -1,15 +1,19 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Button, Card, Input } from "semantic-ui-react";
-import {Link} from "react-router-dom";
 import validate from "./validate";
 import renderField from "./RenderField";
 
 const LoginForm = props => {
-  const { handleSubmit, pristine, previousPage, submitting ,error} = props;
+  const { handleSubmit, pristine, previousPage, submitting ,error,message} = props;
   return (
     <Card fluid className="card-wrapper" raised>
       <form className="card-inner" onSubmit={handleSubmit}>
+      <div className="card-row">
+          <span className="card-subheader">
+            Enter your email address and we'll send you a link to reset your password.
+          </span>
+      </div>
         <div className="card-row">
           <Field
             className="card-field"
@@ -17,26 +21,16 @@ const LoginForm = props => {
             iconPosition="left"
             size="big"
             component={renderField}
-            name="loginEmail"
+            name="forgotEmail"
             placeholder="Email"
             type="email"
           />
         </div>
-        <div className="card-row">
-          <Field
-            className="card-field"
-            icon="lock"
-            iconPosition="left"
-            size="big"
-            component={renderField}
-            name="loginPassword"
-            placeholder="Password"
-            type="password"
-          />
-        </div>
-        <div className="card-row content-right">
-          <Link to="/forgotPassword" className="forgot-password">Forgot password?</Link>
-        </div>
+        {message && (
+          <div className="card-row">
+            <p className="form-success">{message}</p>
+          </div>
+        )}
         {error && (
           <div className="card-row">
             <p className="form-error">{error.message}</p>
@@ -44,7 +38,7 @@ const LoginForm = props => {
         )}
         <div className="card-row">
           <Button className="card-button" type="submit" fluid size="large">
-            Login
+            Send reset email
           </Button>
         </div>
        {false &&  <div className="card-row content-center">
@@ -67,7 +61,7 @@ const LoginForm = props => {
 };
 
 export default reduxForm({
-  form: "login", //                 <------ same form name
+  form: "forgotPassword", //                 <------ same form name
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate
 })(LoginForm);

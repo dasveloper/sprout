@@ -1,0 +1,64 @@
+//Dashboard
+.dashboard-header{
+    padding: .5rem; 
+}
+.form-list {
+    min-width: 550px;
+    > .item {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem !important;
+      &:after {
+        content: none !important;
+      }
+     
+      .list-left-wrapper {
+        display: flex;
+        flex-direction: column;
+        .created-date{
+          color: #c8c8c8;
+          margin:.5rem 0;
+        }
+        .list-type-wrapper {
+          color: #c8c8c8;
+          .type-badge {
+            color: #a8a8a8;
+  
+            .type-badge-icon {
+              color: #a8a8a8;
+            }
+            &.enabled {
+              background: #6d67ef;
+              color: #fff;
+  
+              .type-badge-icon {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+      .content {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        .list-name {
+          font-size: 1.4rem;
+          color: #1a1a1a;
+          margin-bottom: 0.75rem;
+        }
+        .form-list-label {
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+        }
+        .form-list-button {
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+          background: #3ecf8e;
+          color: #fff;
+        }
+      }
+    }
+  }
+  

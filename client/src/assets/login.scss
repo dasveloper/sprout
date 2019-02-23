@@ -1,0 +1,43 @@
+.forgot-password {
+  color: $gray-medium;
+}
+.or {
+  font-weight: bold;
+  position: relative;
+  color: $gray-medium;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    top: 50%;
+    left: 100%;
+    margin-left: 20px;
+    margin-top: 1px;
+    border-bottom: 1px solid $gray-medium;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    top: 50%;
+    right: 100%;
+    margin-right: 20px;
+    margin-top: 1px;
+    border-bottom: 1px solid $gray-medium;
+  }
+}
+.register-toggle {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  .register-toggle-prompt {
+    font-size: 1rem;
+    .register-toggle-link {
+      font-size: 1rem;
+      margin-left: .25rem;
+    }
+  }
+}
+.logged-in-greeting{
+  padding: 1rem;
+}

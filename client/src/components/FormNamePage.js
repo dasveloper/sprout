@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
-import renderField from "./renderField";
+import renderField from "./RenderField";
 import { connect } from "react-redux";
 import {
   Card,
@@ -13,7 +13,6 @@ import {
   Form,
   Button
 } from "semantic-ui-react";
-
 
 const NameInput = props => (
   <Input
@@ -28,25 +27,39 @@ const NameInput = props => (
 
 const FormNamePage = props => {
   const { handleSubmit } = props;
-
   return (
-    <form className="create-form" onSubmit={handleSubmit}>
-      <Card className="first-card" raised>
-        <Card.Description>
-          <div className="header-row">
-            <span className="list-name-header">Give your contact list a name</span> 
-            <span className="list-name-subheader">Make it unique so you can find it later</span>
-          </div>
-          <div className="row">
-          <Field component={NameInput} name="listName" />
-          </div>
-        </Card.Description>
-        <Card.Content extra>
-          <Button type="submit" fluid className="start">Begin</Button>
+    <Card fluid className="card-wrapper" raised>
+      <form className="card-inner" onSubmit={handleSubmit}>
+        <div className="card-header-wrapper">
+          <span className="card-header">
+            Give your contact list a name
+          </span>
+          <span className="card-subheader">
+            Make it unique so you can find it later
+          </span>
+        </div>
+        <div className="card-row row-spacing">
 
-        </Card.Content>
-      </Card>
-    </form>
+          <Field
+            size="big"
+            component={renderField}
+            name="listName"
+            placeholder="List name"
+          />
+        </div>
+
+        <div className="card-row">
+          <Button
+            type="submit"
+            fluid
+            className="card-button start"
+            size="large"
+          >
+            Begin
+          </Button>
+        </div>
+      </form>
+    </Card>
   );
 };
 
@@ -56,6 +69,7 @@ export default reduxForm({
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate,
   initialValues: {
+    listName:"",
     isPlural: false,
     showName: true,
     showEmail: true,

@@ -3,21 +3,48 @@ const validate = values => {
     if (!values.firstName) {
       errors.firstName = 'Required';
     }
-    if (!values.lastName) {
-      errors.lastName = 'Required';
+    if (!values.listName) {
+      errors.listName = 'Required';
     }
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
+
     if (!values.sex) {
       errors.sex = 'Required';
     }
     if (!values.favoriteColor) {
       errors.favoriteColor = 'Required';
     }
-    return errors;
+    //Login Form
+    if (!values.loginEmail) {
+      errors.loginEmail = 'Please enter your email';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.loginEmail)) {
+      errors.loginEmail = 'Invalid email address';
+    }
+    if (!values.loginPassword) {
+      errors.loginPassword = 'Please enter a password';
+    }
+
+    //Register Form
+    if (!values.registerFirstName) {
+      errors.registerFirstName = 'Please enter your first name';
+    }
+    if (!values.registerLastName) {
+      errors.registerLastName = 'Please enter your last name';
+    }
+    if (!values.registerEmail) {
+      errors.registerEmail = 'Please enter your email';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.registerEmail)) {
+      errors.registerEmail = 'Invalid email address';
+    }
+    if (!values.registerPassword) {
+      errors.registerPassword = 'Please enter a password';
+    }
+    if (!values.registerConfirmPassword) {
+      errors.registerConfirmPassword = 'Please confirm your password';
+    }
+    if (values.registerPassword && values.registerConfirmPassword &&
+      values.registerPassword !== values.registerConfirmPassword  ) {
+      errors.registerConfirmPassword = 'Passwords do not match';
+    }    return errors;
   };
   
   export default validate;

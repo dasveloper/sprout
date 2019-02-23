@@ -1,0 +1,22 @@
+.responses-menu{
+    padding: .5rem;
+    margin: 0 !important;
+    .responses-menu-name{
+        font-size: 1.4rem;
+    }
+}
+.responses-table{
+    margin:0 !important;
+    .no-responses-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        .no-responses{
+            font-size: 1.2rem;
+            color: #c8c8c8;
+            text-align: center;
+
+        }
+    }
+}

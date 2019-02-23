@@ -3,25 +3,25 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Card } from "semantic-ui-react";
 import LoggedIn from "../components/LoggedIn";
-import LoginForm from "../components/LoginForm";
-import { login } from "../actions/account";
+import RegisterForm from "../components/RegisterForm";
+import { register } from "../actions/account";
 
 class Register extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { user, login } = this.props;
+    const { user, register } = this.props;
     const { account } = user;
     return (
       <div class="container-inner center">
-        {account ? <LoggedIn /> : <LoginForm onSubmit={login} />}
+        {account ? <LoggedIn /> : <RegisterForm onSubmit={register} />}
         {account ? undefined : <Card fluid raised>
           <div className="register-toggle">
             <span className="register-toggle-prompt">
-              Don't have an account?
-              <Link className="register-toggle-link" to="/register">
-                Sign up
+              Already have an account?
+              <Link className="register-toggle-link" to="/login">
+                Login
               </Link>
             </span>
           </div>
@@ -34,11 +34,12 @@ class Register extends Component {
 function mapStateToProps({ form, contactList, user }) {
   return {
     user,
-    form
+    form,
+    contactList
   };
 }
 const mapDispatchToProps = {
-  login
+  register
 };
 
 export default connect(

@@ -39,12 +39,11 @@ class Nav extends Component {
       case false:
         return (
           <Menu.Item position="right">
-            <Button compactas="a" primary compact href="login">
+      
+            <Button className="login-button" compact as={Link} to="/login">
               Login
             </Button>
-            <Button compact as="a" primary style={{ marginLeft: "0.5em" }}>
-              Sign Up
-            </Button>
+   
           </Menu.Item>
         );
       default:
@@ -66,6 +65,8 @@ class Nav extends Component {
   render() {
     const { fixed } = this.state;
     const {pathname} = this.props.location;
+    const { user } = this.props;
+
 
     return (
       <Visibility
@@ -88,7 +89,6 @@ class Nav extends Component {
             secondary={!fixed}
             size="large"
           >
-            <Container>
               <div className="logo-wrapper">
               <Link  to={`/`}  className="logo">deetz</Link>
               </div>
@@ -98,7 +98,6 @@ class Nav extends Component {
               <Menu.Item   as={ Link } to={`/dashboard`} active={pathname === "/dashboard"} >Dashboard</Menu.Item>
 
               {this.renderHeaderContent()}
-            </Container>
           </Menu>
         </Segment>
       </Visibility>

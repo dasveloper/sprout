@@ -1,13 +1,29 @@
-import React from 'react';
+import React from "react";
+import { Input } from "semantic-ui-react";
+const renderField = ({
+  input,
+  className,
+  size,
+  placeholder,
+  type,
+  icon,
+  iconPosition,
+  meta: { touched, error }
+}) => (
+    <div className="card-field">
+      <Input
+        {...input}
+        placeholder={placeholder}
+        type={type}
+        className={`card-field-input ${className}`}
+        size={size}
+        component={Input}
+        icon={icon}
+        iconPosition ={iconPosition}
+      />
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div className="form-field">
-    <label>{label}</label>
-    <div>
-      <input class="form-input" {...input} placeholder={label} type={type} />
-      {touched && error && <span>{error}</span>}
+      {touched && error && <span className="card-field-error">{error}</span>}
     </div>
-  </div>
 );
 
 export default renderField;

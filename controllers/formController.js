@@ -103,7 +103,7 @@ exports.fetch_responses = function(req, res) {
       if (err) throw new Error(err);
       return res.status(200).json({
         success: true,
-        responses: form.responses
+        form: form
       });
     });
 };

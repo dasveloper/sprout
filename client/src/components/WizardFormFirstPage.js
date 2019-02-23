@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
-import renderField from "./renderField";
+import renderField from "./RenderField";
 import { connect } from "react-redux";
 import {
   Card,
@@ -57,35 +57,53 @@ const WizardFormFirstPage = props => {
   const { handleSubmit, previousPage } = props;
 
   return (
-    <form className="create-form" onSubmit={handleSubmit}>
-      <Card className="first-card" raised>
-        <Card.Description>
-          <div className="row">
-            <Field component={NameInput} name="name" />
-          </div>
-          <div className="row">
-            <Field
-              className="plural-dropdown"
-              component={DropdownFormField}
-              name="isPlural"
-            />
-            <span className="text-row">collecting contacts for</span>
-          </div>
-          <div className="row">
-            <Field component={ReasonField} name="reason" />
-          </div>
-        </Card.Description>
-        <Card.Content extra>
+    <Card fluid className="form-card" raised>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-row">
+          <Field
+            className="dotted form-field"
+            size="massive"
+            component={Input}
+            name="name-input"
+            placeholder="Your name"
+            transparent
+          />
+        </div>
+        <div className="form-row">
+          <Field
+            className="plural-dropdown"
+            component={DropdownFormField}
+            name="isPlural"
+          />
+          <span className="text-row">collecting contacts for</span>
+        </div>
+        <div className="form-row">
+          <Field
+            className="dotted form-field"
+            size="massive"
+            component={Input}
+            name="reason-input"
+            placeholder="a good reason"
+            transparent
+          />
+        </div>
 
-          <Button type="button"  className="previous" onClick={previousPage} basic>
-          Previous
+        <div className="form-row">
+          <Button
+            type="button"
+            className="previous"
+            onClick={previousPage}
+            basic
+            size="large"
+          >
+            Previous
           </Button>
-          <Button type="submit"  className="next">
+          <Button type="submit" className="next" size="large">
             Next
           </Button>
-        </Card.Content>
-      </Card>
-    </form>
+        </div>
+      </form>
+    </Card>
   );
 };
 

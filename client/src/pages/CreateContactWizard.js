@@ -42,39 +42,41 @@ class CreateContactWizard extends Component {
     this.setState({ page: this.state.page - 1 });
   }
   renderWizardPages() {
-    const { onSubmit, createContactList } = this.props;
-
+    const { onSubmit, createContactList, form } = this.props;
     const { page } = this.state;
     return (
       <Fragment>
-                {page === 1 && <FormNamePage onSubmit={this.nextPage} />}
-
-        {page === 2 && <WizardFormFirstPage            previousPage={this.previousPage}
- onSubmit={this.nextPage} />}
-        {page === 3 && (
+        {page === 1 && <FormNamePage  onSubmit={this.nextPage} />}
+        {page === 2 && (
           <WizardFormSecondPage
             previousPage={this.previousPage}
             onSubmit={createContactList}
           />
         )}
+        {/** page === 2 && (
+          <WizardFormFirstPage
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}/
+   
         {page === 4 && (
           <WizardFormThirdPage
             previousPage={this.previousPage}
             onSubmit={createContactList}
           />
-        )}
+        )**/}
       </Fragment>
     );
   }
   render() {
-    const {contactList } = this.props;
+    const { contactList } = this.props;
 
     const { contactListSubmitted, contactListId } = contactList;
     return (
-      <div class="create-container">
+      <div class="container-inner center">
         {!contactListSubmitted && this.renderWizardPages()}
-  {contactListSubmitted && <SuccessPage contactListId= {contactListId}/>}
-    
+        {contactListSubmitted && <SuccessPage contactListId={contactListId} />}
       </div>
     );
   }
