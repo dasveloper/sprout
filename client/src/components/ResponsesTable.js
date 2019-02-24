@@ -128,7 +128,7 @@ class Responses extends Component {
           >
             <p
               style={{ textAlign: "center" }}
-            >{`https://deetz.io/respond/${_id}`}</p>
+            >{`https://www.deetz.io/respond/${_id}`}</p>
           </Segment>
           <Menu.Item>
             <Dropdown text="Options" options={options} />

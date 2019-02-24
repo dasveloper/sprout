@@ -22,7 +22,7 @@ const CreateSuccessPage = props => {
             >
               <p
                 style={{ textAlign: "center" }}
-              >{`https://deetz.io/respond/${contactListId}`}</p>
+              >{`https://www.deetz.io/respond/${contactListId}`}</p>
             </Segment>
         </div>
         <div className="card-row">
