@@ -43,7 +43,7 @@ const LoginForm = props => {
           </div>
         )}
         <div className="card-row">
-          <Button className="card-button" type="submit" fluid size="large">
+          <Button className="card-button btn-primary" type="submit" fluid size="large">
             Login
           </Button>
         </div>

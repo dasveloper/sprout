@@ -5,6 +5,7 @@
     flex-direction: column;
     flex: 1;
     align-items: stretch;
+    min-height: 500px;
     .homepage-right {
       flex-basis: 50%;
       position: relative;
@@ -65,17 +66,10 @@
 @media only screen and (max-height: 550px) {
   .container-inner {
     &.homepage-hero-wrapper {
-      .homepage-right {
-        .explainer-img {
-          max-height: 90%;
-        }
-      }
       .homepage-left {
         .hero {
-          padding: 0.5rem;
-
           .hero-logo {
-            font-size: 2.5rem;
+            font-size: 4.5rem;
           }
         }
         .hero-subheader {

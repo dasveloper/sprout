@@ -36,7 +36,7 @@ class Homepage extends Component {
               <Button
                 as={Link}
                 to={"/dashboard"}
-                className="card-button"
+                className="btn-primary"
                 size="large"
               >
                 Get started

@@ -87,7 +87,7 @@ class Dashboard extends Component {
                   <Button
                     as={Link}
                     to={`/responses/${list._id}`}
-                    className="form-list-button"
+                    className="form-list-button btn-primary"
                   >
                     View Contacts
                   </Button>

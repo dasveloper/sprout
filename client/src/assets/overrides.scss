@@ -1,0 +1,26 @@
+
+  .ui.button.submit-form {
+  
+    min-width: 0;
+  }
+  .ui.button.next {
+    background: #2b8be0 !important;
+    color: #fff !important;
+  }
+
+  .btn-primary{
+    background: #3ecf8e !important;
+    color: #fff !important;
+    min-width: 200px;
+    &:hover, &:focus, &:active{
+        background: darken(#3ecf8e,10%) !important;
+    }
+  }
+  .btn-secondary{
+    background: #2b8be0 !important;
+    color: #fff !important;
+    min-width: 200px;
+    &:hover, &:focus, &:active{
+        background: darken(#2b8be0,10%) !important;
+    }
+  }

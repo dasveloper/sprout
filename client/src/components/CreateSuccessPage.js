@@ -32,7 +32,7 @@ const CreateSuccessPage = props => {
           to={`/responses/${contactListId}`}
            
             fluid
-            className="card-button start"
+            className="card-button btn-primary"
             size="large"
           >
             View Responses

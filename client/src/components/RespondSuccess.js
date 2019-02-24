@@ -22,7 +22,7 @@ const RespondSuccess = props => {
           to={`/create`}
            
             fluid
-            className="card-button start"
+            className="card-button btn-primary"
             size="large"
           >
            Create your own contact list

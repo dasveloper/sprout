@@ -79,7 +79,7 @@ const ResponseForm = props => {
           <Button
             type="submit"
             fluid
-            className="card-button start"
+            className="card-button btn-primary"
             size="large"
           >
             Submit

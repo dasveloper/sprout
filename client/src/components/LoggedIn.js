@@ -18,7 +18,7 @@ const LoggedIn = props => {
           <Button
             as={Link}
             to={"/create"}
-            className="card-button"
+            className="card-button btn-primary"
             fluid
             size="large"
           >
@@ -29,7 +29,7 @@ const LoggedIn = props => {
           <Button
             as={Link}
             to={"/dashboard"}
-            className="card-button"
+            className="card-button btn-primary"
             fluid
             size="large"
           >
@@ -41,7 +41,7 @@ const LoggedIn = props => {
         </div>
         <div className="card-row">
           <Button
-            className="card-button"
+            className="card-button btn-secondary"
             as="a"
             href="auth/google"
             fluid

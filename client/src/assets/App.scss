@@ -5,7 +5,7 @@
 @import "responses.scss";
 @import "dashboard.scss";
 @import "homepage.scss";
-
+@import "overrides.scss";
 @font-face {
   font-family: "CoralPen";
   src: url("./fonts/Frosty-Regular.ttf") format("truetype");
@@ -53,6 +53,7 @@
     margin: 0;
   }
 }
+
 @media screen and (min-width: 650px) {
   .container-inner {
     padding: 2rem;
@@ -302,24 +303,3 @@ i.inverted.circular.icon {
   }
 }
 
-//Form
-.ui.button.start {
-  background: #3ecf8e !important;
-  color: #fff !important;
-}
-.ui.button.submit-form {
-  background: #3ecf8e !important;
-  color: #fff !important;
-}
-.ui.button.next {
-  background: #2b8be0 !important;
-  color: #fff !important;
-}
-
-.extra.content {
-  display: flex;
-  justify-content: space-between;
-  &:after {
-    content: none !important;
-  }
-}
