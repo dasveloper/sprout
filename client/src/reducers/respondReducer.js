@@ -9,7 +9,9 @@ export function respondReducer(state = initialState, action) {
     case "RESPOND_SUCCESS":
       return {
         ...state,
-        respondSuccess: true
+        respondSuccess: true,
+        loading: false
+
       };
     case "FETCH_FORM_SUCCESS":
       return {

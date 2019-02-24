@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
 import {
   Card,
   Confirm,
@@ -8,10 +9,13 @@ import {
   Input,
   Menu,
   Table,
-  Segment
+  Segment,
+  Message,
+  Button
 } from "semantic-ui-react";
 import { fetchResponses } from "../actions/responses";
 import { deleteContactList } from "../actions/contactList";
+import {withRouter} from "react-router-dom";
 
 class Responses extends Component {
   constructor(props) {
@@ -27,6 +31,8 @@ class Responses extends Component {
   deleteList(formId) {
     this.props.deleteContactList(formId);
     this.closeDeleteConfirmation();
+    this.props.history.push("/dashboard");
+
   }
   openDeleteConfirmation = () =>
     this.setState({ deleteConfirmationOpen: true });
@@ -50,8 +56,40 @@ class Responses extends Component {
       direction: direction === "ascending" ? "descending" : "ascending"
     });
   };
+  renderFormNotFound() {
+    return (
+      <div className="container-inner center">
+        <Card fluid className="card-wrapper" raised>
+          <div className="card-inner">
+            <Message
+              negative
+              icon="remove circle"
+              header="Sorry, this contact list coiuld not be found"
+              content={
+                <p>
+                  If you believe this is an error please{" "}
+                  <Link to="/support">contact support</Link>
+                </p>
+              }
+            />
 
-  render() {
+            <div className="card-row">
+              <Button
+                as={Link}
+                to={"/dashboard"}
+                className="card-button"
+                fluid
+                size="large"
+              >
+                Return to your dashboard
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+  renderTable() {
     const { form } = this.props;
     const { listName, _id, responses } = form;
     const { column, data, direction, deleteConfirmationOpen } = this.state;
@@ -87,13 +125,12 @@ class Responses extends Component {
             style={{ justifyContent: "center" }}
             compact
             className="share-wrapper"
-
           >
             <p
               style={{ textAlign: "center" }}
             >{`https://deetz.io/respond/${_id}`}</p>
           </Segment>
-          <Menu.Item >
+          <Menu.Item>
             <Dropdown text="Options" options={options} />
           </Menu.Item>
         </Menu>
@@ -153,6 +190,12 @@ class Responses extends Component {
       </Card>
     );
   }
+  render() {
+    const { form } = this.props;
+    {
+     return  (form === null ? this.renderFormNotFound() : this.renderTable());
+    }
+  }
 }
 
 function mapStateToProps({ user, dashboard }) {
@@ -168,4 +211,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Responses);
+)(withRouter(Responses));

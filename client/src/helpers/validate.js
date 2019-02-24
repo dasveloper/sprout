@@ -28,12 +28,23 @@ const validate = values => {
 
   if (!values.responsePhone) {
     errors.responsePhone = "Please enter your phone number";
-  } else if (
-     !/^(0|[1-9][0-9]{9})$/i.test(values.responsePhone)
-  ){
+  } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.responsePhone)) {
     errors.responsePhone = "Invalid phone number, must be 10 digits";
-
   }
+  if (!values.responseName) {
+    errors.responseName = "Please enter your name";
+  }
+  if (!values.responseAddress) {
+    errors.responseAddress = "Please enter your address";
+  }
+  if (!values.responseEmail) {
+    errors.responseEmail = "Please enter your email";
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.responseEmail)
+  ) {
+    errors.responseEmail = "Invalid email address";
+  }
+
   //Register Form
   if (!values.registerFirstName) {
     errors.registerFirstName = "Please enter your first name";

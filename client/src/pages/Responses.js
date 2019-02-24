@@ -58,10 +58,9 @@ class Responses extends Component {
   renderResponsePage() {
     const { responsesPage } = this.props;
     const { column, data, direction } = this.state;
-    const { form, error } = responsesPage;
-
+    const { form, error,loading } = responsesPage;
     if (error) return <PermissionDenied />;
-    else if (form === null) return <Loader />;
+    else if (loading) return <Loader />;
     else return <ResponsesTable form={form} />;
   }
   render() {

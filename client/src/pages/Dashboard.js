@@ -22,7 +22,7 @@ class Dashboard extends Component {
           <Button
             as={Link}
             to={"/create"}
-            className="card-button"
+            className="card-button btn-primary"
             fluid
             size="large"
           >
