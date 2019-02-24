@@ -14,7 +14,7 @@ class Register extends Component {
     const { user, login } = this.props;
     const { account } = user;
     return (
-      <div class="container-inner center">
+      <div className="container-inner center">
         {account ? <LoggedIn /> : <LoginForm onSubmit={login} />}
         {account ? undefined : <Card fluid raised>
           <div className="register-toggle">

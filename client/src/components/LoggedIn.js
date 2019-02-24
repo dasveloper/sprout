@@ -1,11 +1,8 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
-import { Button, Card, Input } from "semantic-ui-react";
-import validate from "./validate";
-import renderField from "./RenderField";
-import { withRouter, Link } from "react-router-dom";
-
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
+import { Button, Card } from "semantic-ui-react";
+
 
 const LoggedIn = props => {
   const { user } = props;

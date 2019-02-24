@@ -1,5 +1,6 @@
 import React from "react";
 import { Input } from "semantic-ui-react";
+
 const renderField = ({
   input,
   className,
@@ -17,7 +18,6 @@ const renderField = ({
         type={type}
         className={`card-field-input ${className}`}
         size={size}
-        component={Input}
         icon={icon}
         iconPosition ={iconPosition}
       />

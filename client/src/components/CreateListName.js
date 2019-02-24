@@ -1,19 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Field, reduxForm } from "redux-form";
-import validate from "./validate";
+import { Button, Card, Input } from "semantic-ui-react";
 import renderField from "./RenderField";
-import { connect } from "react-redux";
-import {
-  Card,
-  Input,
-  Icon,
-  Segment,
-  Header,
-  Dropdown,
-  Form,
-  Button
-} from "semantic-ui-react";
-
+import validate from "../helpers/validate"
 const NameInput = props => (
   <Input
     value={props.input.value}
@@ -25,7 +14,7 @@ const NameInput = props => (
   />
 );
 
-const FormNamePage = props => {
+const CreateListName = props => {
   const { handleSubmit } = props;
   return (
     <Card fluid className="card-wrapper" raised>
@@ -55,7 +44,7 @@ const FormNamePage = props => {
             className="card-button start"
             size="large"
           >
-            Begin
+            Create
           </Button>
         </div>
       </form>
@@ -70,10 +59,9 @@ export default reduxForm({
   validate,
   initialValues: {
     listName:"",
-    isPlural: false,
     showName: true,
     showEmail: true,
     showPhone: true,
     showAddress: true
   }
-})(FormNamePage);
+})(CreateListName);

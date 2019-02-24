@@ -4,10 +4,11 @@
 @import "create.scss";
 @import "responses.scss";
 @import "dashboard.scss";
+@import "homepage.scss";
 
 @font-face {
   font-family: "CoralPen";
-  src: url("./fonts/CoralPen.ttf") format("truetype");
+  src: url("./fonts/Frosty-Regular.ttf") format("truetype");
 }
 
 //NAV HEADER
@@ -20,6 +21,44 @@
 }
 .temp {
   color: #6d67ef;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #5fd5d1;
+  display: flex;
+  flex-direction: column;
+}
+.container-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.container-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  &.center {
+    justify-content: center;
+  }
+}
+.ui.vertical.segment.mobile-submenu-wrapper {
+  text-align: center;
+  padding: 0;
+  background: #1bafa9;
+  padding-bottom: 0;
+  > .menu {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 650px) {
+  .container-inner {
+    padding: 2rem;
+     min-width: 600px;
+     width: auto;
+  }
 }
 .create-container {
   min-height: 100vh;
@@ -175,7 +214,7 @@ i.inverted.circular.icon {
 }
 
 //NAV
-.nav-wrapper{
+.nav-wrapper {
   .ui.menu {
     .login-button {
       margin-left: 0.5rem;
@@ -249,41 +288,19 @@ i.inverted.circular.icon {
   text-align: center;
 }
 
-.container {
-  min-height: 100vh;
-  background-color: #5fd5d1;
-  display: flex;
-  flex-direction: column;
-}
-.container-wrapper {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-.container-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  min-width: 600px;
-  &.center {
-    justify-content: center;
-  }
-}
 .logo-wrapper {
   display: flex;
   align-items: center;
   margin: auto 2rem;
   .logo {
     font-family: "CoralPen";
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     margin: 0;
     padding: 0;
     line-height: 1;
     color: #ffc24c;
   }
 }
-
 
 //Form
 .ui.button.start {

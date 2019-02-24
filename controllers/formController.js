@@ -3,16 +3,20 @@ const mongoose = require("mongoose");
 const Form = mongoose.model("Form");
 const User = mongoose.model("User");
 const Response = mongoose.model("Response");
+const validate = require("../helpers/validation");
 
 exports.submit_response = function(req, res) {
-  const { name, phone, email, address, formId } = req.body;
+  const { responseName, responsePhone, responseEmail, responseAddress, formId } = req.body;
+
+
+
   Form.findById(formId, (err, form) => {
     if (err) throw new Error(err);
     var newResponse = new Response({
-      name: name,
-      phone: phone,
-      email: email,
-      address: address,
+      name: responseName,
+      phone: responsePhone,
+      email: responseEmail,
+      address: responseAddress,
       form: formId
     });
 
@@ -59,6 +63,8 @@ exports.create_form = function(req, res) {
       showAddress: showAddress,
       isPlural: isPlural,
       reason: reason,
+      creatorName: req.user.firstName,
+
       creator: req.user._id
     });
 
@@ -82,9 +88,37 @@ exports.create_form = function(req, res) {
   });
 };
 
+exports.delete_form = function(req, res) {
+  const { formId } = req.body;
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) throw new Error(err);
+    Form.findByIdAndRemove(formId, function(err, form) {
+      if (err) {
+        res.redirect("/");
+        throw new Error(err);
+      }
+      // we insert our newpost in our posts field corresponding to the user we found in our database call
+      user.update(
+        { _id: req.user._id }, // you not need to use ObjectId here
+        { $pull: { forms: { _id: formId } } },
+        function(err, result) {
+          // can you give here the output of console.log(result);
+        }
+      );
+      // we save our user with our new data (our new post).
+      user.save(err => {
+        return res.status(200).json({
+          success: true,
+          message: form.id
+        });
+      });
+    });
+  });
+};
+
 exports.get_form = function(req, res) {
   const { formId } = req.query;
-
   Form.findById(formId, (err, form) => {
     if (err) throw new Error(err);
     return res.status(200).json({
@@ -117,7 +151,7 @@ exports.fetch_forms = function(req, res) {
       if (err) throw new Error(err);
       return res.status(200).json({
         success: true,
-        forms: user.forms
+        lists: user.forms
       });
     });
 };

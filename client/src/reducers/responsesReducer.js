@@ -1,7 +1,8 @@
 // Search Reducer
 const initialState = {
   form: null,
-  error: null
+  error: null,
+  loading: true
 };
 export function responsesReducer(state = initialState, action) {
   switch (action.type) {
@@ -9,13 +10,18 @@ export function responsesReducer(state = initialState, action) {
       return {
         ...state,
         form: action.data.form,
-        error: null
+        error: null,
+        loading: false
       };
     case "FETCH_RESPONSES_FAIL":
-      console.log(action.error.message);
       return {
         ...state,
-        error: action.error.message
+        error: action.error.message,
+        loading: false
+      };
+    case "RESET_RESPONSES":
+      return {
+        ...initialState
       };
     default:
       return state;

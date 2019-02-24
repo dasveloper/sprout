@@ -1,18 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import validate from "./validate";
-import renderField from "./RenderField";
-import {
-  Card,
-  Input,
-  Icon,
-  Segment,
-  Header,
-  Dropdown,
-  Form,
-  Checkbox,
-  Button
-} from "semantic-ui-react";
+import { Button, Card, Checkbox, Icon, Segment } from "semantic-ui-react";
+import validate from "../helpers/validate"
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false;
@@ -32,10 +21,15 @@ const WizardFormSecondPage = props => {
   return (
     <Card fluid className="card-wrapper" raised>
         <form className="card-inner" onSubmit={handleSubmit}>
-
+        <div className="card-header-wrapper">
+        
+          <span className="card-subheader">
+           What contact information are you collecting?
+          </span>
+        </div>
         <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
-              <div class="type-toggle-left-wrapper">
+              <div className="type-toggle-left-wrapper">
                 <Icon
                   circular
                   inverted
@@ -54,7 +48,7 @@ const WizardFormSecondPage = props => {
           </div>
           <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
-              <div class="type-toggle-left-wrapper">
+              <div className="type-toggle-left-wrapper">
                 <Icon
                   circular
                   inverted
@@ -73,7 +67,7 @@ const WizardFormSecondPage = props => {
           </div>
           <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
-              <div class="type-toggle-left-wrapper">
+              <div className="type-toggle-left-wrapper">
                 <Icon
                   circular
                   inverted
@@ -92,7 +86,7 @@ const WizardFormSecondPage = props => {
           </div>
           <div className="card-row">
             <Segment compact className="type-toggle-wrapper">
-              <div class="type-toggle-left-wrapper">
+              <div className="type-toggle-left-wrapper">
                 <Icon
                   circular
                   inverted

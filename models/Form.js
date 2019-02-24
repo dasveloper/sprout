@@ -7,6 +7,7 @@ const formSchema = new Schema({
   showPhone: { type: Boolean, required: true },
   showAddress: { type: Boolean, required: true },
   creator: { type: Schema.Types.ObjectId, ref: "User",required: true },
+  creatorName:{ type: String, required: true },
   responses: [{ type: Schema.Types.ObjectId, ref: "Response" }],
   updated_at: { type: Date }
 });

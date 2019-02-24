@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function submitResponse(args){
+export function submitResponse(args) {
   return async dispatch => {
     // Initiate loading state
     // dispatch({
@@ -15,14 +15,14 @@ export function submitResponse(args){
         })
         .then(response => {
           dispatch({
-            type: "CREATE_CONTACT_LIST_SUCCESS",
+            type: "RESPOND_SUCCESS",
             data: response.data
           });
         })
-        .catch(response => {
+        .catch(err => {
           dispatch({
-            type: "CREATE_CONTACT_LIST",
-            error: response.error
+            type: "RESPOND_FAIL",
+            error: err
           });
         });
 
@@ -66,11 +66,10 @@ export function fetchFormDetails(formId) {
 
       // Update payload in reducer on success
     } catch (err) {
-      // Update error in reducer on failure
-      // dispatch({
-      //   type: 'FETCH_SEARCH_FAILURE',
-      // error: err
-      //  });
+      dispatch({
+        type: "FETCH_FORM_FAIL",
+        error: err
+      });
     }
   };
 }

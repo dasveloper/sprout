@@ -1,25 +1,11 @@
-import React, { Fragment, Component } from "react";
-import PropTypes from "prop-types";
-import FormNamePage from "../components/FormNamePage";
-import WizardFormFirstPage from "../components/WizardFormFirstPage";
-import WizardFormSecondPage from "../components/WizardFormSecondPage";
-import WizardFormThirdPage from "../components/WizardFormThirdPage";
-import SuccessPage from "../components/SuccessPage";
-
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
-import validate from "../components/validate";
+import CreateListName from "../components/CreateListName";
+import CreateSuccessPage from "../components/CreateSuccessPage";
+import CreateContactTypes from "../components/CreateContactTypes";
 import { createContactList } from "../actions/contactList";
 
-import {
-  Icon,
-  Image,
-  Segment,
-  Step,
-  Card,
-  Input,
-  Dropdown
-} from "semantic-ui-react";
+
 const options = [
   { key: "is", text: "is", value: "is" },
   { key: "are", text: "are", value: "are" }
@@ -46,26 +32,13 @@ class CreateContactWizard extends Component {
     const { page } = this.state;
     return (
       <Fragment>
-        {page === 1 && <FormNamePage  onSubmit={this.nextPage} />}
+        {page === 1 && <CreateListName  onSubmit={this.nextPage} />}
         {page === 2 && (
-          <WizardFormSecondPage
+          <CreateContactTypes
             previousPage={this.previousPage}
             onSubmit={createContactList}
           />
         )}
-        {/** page === 2 && (
-          <WizardFormFirstPage
-            previousPage={this.previousPage}
-            onSubmit={this.nextPage}
-          />
-        )}/
-   
-        {page === 4 && (
-          <WizardFormThirdPage
-            previousPage={this.previousPage}
-            onSubmit={createContactList}
-          />
-        )**/}
       </Fragment>
     );
   }
@@ -74,9 +47,9 @@ class CreateContactWizard extends Component {
 
     const { contactListSubmitted, contactListId } = contactList;
     return (
-      <div class="container-inner center">
+      <div className="container-inner center">
         {!contactListSubmitted && this.renderWizardPages()}
-        {contactListSubmitted && <SuccessPage contactListId={contactListId} />}
+        {contactListSubmitted && <CreateSuccessPage contactListId={contactListId} />}
       </div>
     );
   }

@@ -4,7 +4,7 @@ const validate = values => {
       errors.firstName = 'Required';
     }
     if (!values.listName) {
-      errors.listName = 'Required';
+      errors.listName = 'Please enter a name for your contact list';
     }
 
     if (!values.sex) {

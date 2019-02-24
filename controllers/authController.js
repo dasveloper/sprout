@@ -11,18 +11,41 @@ const validate = require("../helpers/validation");
 const User = mongoose.model("User");
 
 exports.register_local = function(req, res, next) {
-  const {registerEmail, registerPassword} = req.body;
+  const {registerEmail, registerPassword, registerFirstName, registerLastName, registerConfirmPassword} = req.body;
   if (!validate(registerEmail, "email")) {
     return res.status(400).json({
       success: false,
       message: "Please provide a valid email address"
     });
   }
-
+  if (!validate(registerFirstName, "string")) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid first name"
+    });
+  }
+  if (!validate(registerLastName, "string")) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid last name"
+    });
+  }
   if (!validate(registerPassword, "string")) {
     return res.status(400).json({
       success: false,
       message: "Please provide a valid password"
+    });
+  }
+  if (!validate(registerConfirmPassword, "string")) {
+    return res.status(400).json({
+      success: false,
+      message: "Please confirm your password"
+    });
+  }
+  if (registerPassword !== registerConfirmPassword) {
+    return res.status(400).json({
+      success: false,
+      message: "Your passwords do not match"
     });
   }
   passport.authenticate("local-signup", (err, user, info) => {

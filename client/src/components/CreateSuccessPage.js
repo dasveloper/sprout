@@ -1,19 +1,8 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
-import validate from "./validate";
-import {
-  Card,
-  Input,
-  Icon,
-  Segment,
-  Header,
-  Dropdown,
-  Form,
-  Checkbox,
-  Button
-} from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Card, Segment } from "semantic-ui-react";
 
-const SuccessPage = props => {
+const CreateSuccessPage = props => {
   const { contactListId } = props;
 
   return (
@@ -37,7 +26,15 @@ const SuccessPage = props => {
             </Segment>
         </div>
         <div className="card-row">
-          <Button href={`/responses/${contactListId}`} primary>
+       
+          <Button
+          as= {Link}
+          to={`/responses/${contactListId}`}
+           
+            fluid
+            className="card-button start"
+            size="large"
+          >
             View Responses
           </Button>
         </div>
@@ -46,4 +43,4 @@ const SuccessPage = props => {
   );
 };
 
-export default SuccessPage;
+export default CreateSuccessPage;

@@ -3,7 +3,7 @@ import { Message, Card, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 const PermissionDenied = props => {
   return (
-    <div class="container-inner center">
+    <div className="container-inner center">
       <Card fluid className="card-wrapper" raised>
         <div className="card-inner">
           <Message

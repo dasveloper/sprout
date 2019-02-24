@@ -1,13 +1,23 @@
 // Search Reducer
 const initialState = {
-  forms: []
+  lists: [],
+  error: null,
+  loading: true
 };
 export function dashboardReducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_FORMS_SUCCESS":
+    case "FETCH_LISTS_SUCCESS":
       return {
         ...state,
-        forms: action.data.forms
+        lists: action.data.lists,
+        loading: false,
+        error: null
+      };
+    case "FETCH_LISTS_FAIL":
+      return {
+        ...state,
+        error: action.data.lists,
+        loading: false
       };
     default:
       return state;

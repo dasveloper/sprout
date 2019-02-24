@@ -31,19 +31,13 @@ class Nav extends Component {
     const { user } = this.props;
     switch (user.account) {
       case null:
-        return (
-          <Menu.Item position="right">
-            <p>null</p>
-          </Menu.Item>
-        );
+        return undefined;
       case false:
         return (
           <Menu.Item position="right">
-      
             <Button className="login-button" compact as={Link} to="/login">
               Login
             </Button>
-   
           </Menu.Item>
         );
       default:
@@ -54,7 +48,7 @@ class Nav extends Component {
               href="/auth/logout"
               as="a"
               style={{ marginLeft: "0.5em" }}
-              color='red'
+              color="red"
             >
               Logout
             </Button>
@@ -62,11 +56,100 @@ class Nav extends Component {
         );
     }
   }
-  render() {
+  renderDesktopMenu() {
     const { fixed } = this.state;
-    const {pathname} = this.props.location;
+    const { pathname } = this.props.location;
     const { user } = this.props;
 
+    return (
+      <Segment
+        textAlign="center"
+        style={{
+          padding: "0em",
+          backgroundColor: "#1BAFA9",
+          paddingBottom: 0
+        }}
+        vertical
+      >
+
+        <Menu
+          fixed={fixed ? "top" : null}
+          pointing={!fixed}
+          secondary={!fixed}
+          size="large"
+        >
+          <div className="logo-wrapper">
+            <Link to={`/`} className="logo">
+              deetz
+            </Link>
+          </div>
+          <Menu.Item as={Link} to={`/create`} active={pathname === "/create"}>
+            Create
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to={`/dashboard`}
+            active={pathname === "/dashboard"}
+          >
+            Dashboard
+          </Menu.Item>
+          <Menu.Item as={Link} to={`/support`} active={pathname === "/support"}>
+            Support
+          </Menu.Item>
+          {this.renderHeaderContent()}
+        </Menu>
+      </Segment>
+    );
+  }
+  renderMobileMenu() {
+    const { fixed } = this.state;
+    const { pathname } = this.props.location;
+    const { user } = this.props;
+
+    return (
+      <Segment
+
+        className="mobile-submenu-wrapper"
+        vertical
+      >
+        <Menu
+          fixed={fixed ? "top" : null}
+          pointing={!fixed}
+          secondary={!fixed}
+          size="large"
+        >
+          <div className="logo-wrapper">
+            <Link to={`/`} className="logo">
+              deetz
+            </Link>
+          </div>
+
+          {this.renderHeaderContent()}
+        </Menu>
+        <Menu
+          fixed={fixed ? "top" : null}
+          pointing={!fixed}
+          secondary={!fixed}
+          size="large"
+        >
+          <Menu.Item as={Link} to={`/create`} active={pathname === "/create"}>
+            Create
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to={`/dashboard`}
+            active={pathname === "/dashboard"}
+          >
+            Dashboard
+          </Menu.Item>
+          <Menu.Item as={Link} to={`/support`} active={pathname === "/support"}>
+            Support
+          </Menu.Item>
+        </Menu>
+      </Segment>
+    );
+  }
+  render() {
 
     return (
       <Visibility
@@ -74,32 +157,7 @@ class Nav extends Component {
         onBottomPassed={this.showFixedMenu}
         onBottomPassedReverse={this.hideFixedMenu}
       >
-        <Segment
-          textAlign="center"
-          style={{
-            padding: "0em",
-            backgroundColor: "#1BAFA9",
-            paddingBottom: 0
-          }}
-          vertical
-        >
-          <Menu
-            fixed={fixed ? "top" : null}
-            pointing={!fixed}
-            secondary={!fixed}
-            size="large"
-          >
-              <div className="logo-wrapper">
-              <Link  to={`/`}  className="logo">deetz</Link>
-              </div>
-              <Menu.Item as={ Link } to={`/create`} active={pathname === "/create"}>
-                Creator
-              </Menu.Item>
-              <Menu.Item   as={ Link } to={`/dashboard`} active={pathname === "/dashboard"} >Dashboard</Menu.Item>
-
-              {this.renderHeaderContent()}
-          </Menu>
-        </Segment>
+      {this.renderMobileMenu()}
       </Visibility>
     );
   }

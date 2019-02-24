@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Button, Card, Input } from "semantic-ui-react";
-import validate from "./validate";
+import validate from "../helpers/validate";
 import renderField from "./RenderField";
 
 const RegisterForm = props => {

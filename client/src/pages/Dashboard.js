@@ -1,48 +1,21 @@
-import React, { Fragment, Component } from "react";
-import PropTypes from "prop-types";
-import WizardFormFirstPage from "../components/WizardFormFirstPage";
-import WizardFormSecondPage from "../components/WizardFormSecondPage";
-import WizardFormThirdPage from "../components/WizardFormThirdPage";
-import SuccessPage from "../components/SuccessPage";
-import _ from "lodash";
-import { Link } from "react-router-dom";
-import Moment from "react-moment";
-import moment from "moment";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
-import validate from "../components/validate";
-import { fetchResponses } from "../actions/responses";
-import { fetchForms } from "../actions/form";
-
-import {
-  Icon,
-  Image,
-  Segment,
-  Step,
-  Card,
-  Input,
-  Dropdown,
-  Container,
-  Table,
-  List,
-  Button,
-  Statistic,
-  Label
-} from "semantic-ui-react";
-
+import { Link } from "react-router-dom";
+import { Button, Card, Icon, Label, List } from "semantic-ui-react";
+import { fetchLists } from "../actions/dashboard";
+import Loader from "../components/Loader";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    this.props.fetchForms();
+    this.props.fetchLists();
   }
   renderEmptyList() {
     return (
       <div className="card-inner">
         <div className="card-header-wrapper">
-
           <span className="card-subheader">No contact lists found</span>
         </div>
         <div className="card-row">
@@ -59,27 +32,26 @@ class Dashboard extends Component {
       </div>
     );
   }
-  renderFormList() {
+  renderLists() {
     const { dashboard } = this.props;
-    const { forms } = dashboard;
+    const { lists } = dashboard;
     return (
-      <div className="card-inner center">
-              <div className="card-header-wrapper">
+      <div className="card-inner">
+        <div className="card-header-wrapper">
           <span className="card-header">Your contact lists</span>
-
         </div>
         <List className="form-list" divided verticalAlign="middle">
-          {forms.map(function(form, i) {
+          {lists.map(function(list, i) {
             return (
-              <List.Item key={form._id}>
+              <List.Item key={list._id}>
                 <List.Content>
                   <div className="list-left-wrapper">
-                    <h4 className="list-name">{form.listName}</h4>
+                    <h4 className="list-name">{list.listName}</h4>
 
                     <div className="list-type-wrapper">
                       <Label
                         className={`type-badge ${
-                          form.showEmail ? "enabled" : ""
+                          list.showEmail ? "enabled" : ""
                         }`}
                         size="small"
                       >
@@ -88,7 +60,7 @@ class Dashboard extends Component {
                       </Label>
                       <Label
                         className={`type-badge ${
-                          form.showPhone ? "enabled" : ""
+                          list.showPhone ? "enabled" : ""
                         }`}
                         size="small"
                       >
@@ -97,7 +69,7 @@ class Dashboard extends Component {
                       </Label>
                       <Label
                         className={`type-badge ${
-                          form.showAddress ? "enabled" : ""
+                          list.showAddress ? "enabled" : ""
                         }`}
                         size="small"
                       >
@@ -109,12 +81,12 @@ class Dashboard extends Component {
                 </List.Content>
                 <List.Content>
                   <Label className="form-list-label">
-                    {form.responses.length}
+                    {list.responses.length}
                   </Label>
 
                   <Button
                     as={Link}
-                    to={`/responses/${form._id}`}
+                    to={`/responses/${list._id}`}
                     className="form-list-button"
                   >
                     View Contacts
@@ -127,27 +99,36 @@ class Dashboard extends Component {
       </div>
     );
   }
+
+  renderDashBoard() {
+    const { dashboard } = this.props;
+    const { lists, loading, error } = dashboard;
+    if (loading) {
+      return <Loader />;
+    } else if (error) {
+      return "Something went wrong";
+    } else {
+      return (
+        <Card fluid className="card-wrapper" raised>
+          {lists.length === 0 ? this.renderEmptyList() : this.renderLists()}
+        </Card>
+      );
+    }
+  }
   render() {
     const { dashboard } = this.props;
-    const { forms } = dashboard;
-    return (
-      <div class="container-inner ">
-        <Card fluid className="card-wrapper" raised>
-          {forms.length === 0 ? this.renderEmptyList() : this.renderFormList()}
-        </Card>
-      </div>
-    );
+    const { lists } = dashboard;
+    return <div className="container-inner center">{this.renderDashBoard()}</div>;
   }
 }
 
-function mapStateToProps({ user, dashboard }) {
+function mapStateToProps({ dashboard }) {
   return {
-    user,
     dashboard
   };
 }
 const mapDispatchToProps = {
-  fetchForms
+  fetchLists
 };
 
 export default connect(

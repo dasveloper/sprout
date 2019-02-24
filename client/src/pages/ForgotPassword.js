@@ -38,7 +38,7 @@ class ForgotPassword extends Component {
     const { resetMessage } = user;
 
     return (
-      <div class="container-inner center">
+      <div className="container-inner center">
         <ForgotPasswordForm message={resetMessage} onSubmit={forgotPassword} />
         <Card fluid raised>
           <div className="register-toggle">
