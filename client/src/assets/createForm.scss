@@ -1,0 +1,123 @@
+.create-form-wrapper {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: auto;
+  padding: 0.25rem;
+  border-radius: 4px;
+  &.pink {
+    .theme-preview {
+      background: #f580a3;
+    }
+  }
+  &.blue {
+    .theme-preview {
+      background: #2f80ed;
+    }
+  }
+  &.yellow {
+    .theme-preview {
+      background: #ffe35b;
+    }
+  }
+  &.purple {
+    .theme-preview {
+      background: #d49eec;
+    }
+  }
+  &.green {
+    .theme-preview {
+      background: #85c69d;
+    }
+  }
+  &.orange {
+    .theme-preview {
+      background: #ffb473;
+    }
+  }
+}
+.theme-preview {
+  height: 300px;
+  position: relative;
+  border-radius: 4px;
+}
+.theme-choice-wrapper {
+  margin: 1rem 0;
+  text-align: center;
+}
+.theme-choice-label {
+  margin: 0.25rem 0;
+}
+.theme-choice-list {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+.theme-choice {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f8f8f8;
+  margin-right: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .7rem;
+  color: #fff;
+  text-decoration: none;
+  &.pink {
+    background: #f580a3;
+  }
+  &.blue {
+    background: #2f80ed;
+  }
+  &.yellow {
+    background: #ffe35b;
+  }
+  &.purple {
+    background: #d49eec;
+  }
+  &.green {
+    background: #85c69d;
+  }
+  &.orange {
+    background: #ffb473;
+  }
+  &:after {
+    content: "";
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+  }
+}
+.fund-setup-wrapper {
+  margin: 1rem 0;
+  text-align: center;
+
+  .fund-setup-label {
+    margin: 0.25rem 0;
+    text-align: center;
+  }
+  .fund-setup-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    outline: none;
+    -webkit-appearance: none;
+    margin: 0.5rem 0;
+    font-weight: 500;
+
+    .setup-button-icon {
+      margin-left: 0.25rem;
+      font-size: 0.8rem;
+      color: #36aa67;
+    }
+  }
+}

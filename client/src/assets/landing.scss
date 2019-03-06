@@ -1,0 +1,193 @@
+@import "./newsletter.scss";
+@import "./hero.scss";
+@import "./carousel.scss";
+@import "./createForm.scss";
+@import "./features.scss";
+.subscribe-modal{
+        background: #f8f8f8;
+  }
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  z-index: 0;
+  position: relative;
+
+  .mission-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    .mission-header {
+      font-size: 1.4rem;
+      font-family: "Muli", sans-serif;
+      font-weight: 700;
+      margin: 0.25rem;
+      color: #1c1c1c;
+
+      .mission-header-cost {
+        font-family: "Muli", sans-serif;
+        color: #f04149;
+      }
+    }
+    .mission-statement {
+    font-family: "Muli", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin: 0.25rem auto;
+      width: 85%;
+      max-width: 1000px;
+    }
+  }
+
+  .landing-container-body {
+    display: flex;
+    justify-content: center;
+    .landing-container-inner {
+      max-width: 1200px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      .section-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0;
+        margin: 0;
+        .section-icon {
+          font-size: 3rem;
+          color: #18e1c3;
+          margin: 0;
+        }
+        .section-header {
+          font-family: "Muli", sans-serif;
+          font-size: 1.8rem;
+          font-weight: 700;
+          position: relative;
+          margin: 0.5rem 0;
+          &:after {
+            content: "";
+            width: 80%;
+            height: 8px;
+            background: #18e1c3;
+            position: absolute;
+            left: 0%;
+            bottom: -15px;
+            border-radius: 5px;
+          }
+        }
+        .section-description {
+          font-family: "Muli", sans-serif;
+          font-size: 1.4rem;
+          font-weight: 300;
+        }
+        .section-left,
+        .section-right {
+          flex: 1;
+          padding: 0 2rem;
+          box-sizing: border-box;
+          &.top {
+            order: 1;
+          }
+          &.bottom {
+            margin-top: 0.5rem;
+            order: 2;
+          }
+          &.center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+        }
+        .contributions-image-wrapper {
+          background: #ffe35b;
+          border-radius: 50%;
+          height: 300px;
+          width: 300px;
+          display: flex;
+          justify-content: center;
+          margin: 2rem auto;
+          align-items: center;
+
+          .contributions-image {
+            height: 120%;
+            width: auto;
+
+            margin-top: -10%;
+          }
+        }
+        &.demo-carousel {
+          .goals-wrapper {
+            border-radius: 10px;
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    padding: 1.5rem 0;
+    background: #e8e8e8;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: $break-medium) {
+  .landing-container {
+    .landing-container-body {
+      .landing-container-inner {
+        .section-wrapper {
+          flex-direction: row;
+          .section-left,
+          .section-right {
+            &.top {
+              order: initial;
+            }
+            &.bottom {
+              margin-top: 0rem;
+              order: initial;
+            }
+          }
+          .contributions-image-wrapper {
+            background: #ffe35b;
+            border-radius: 50%;
+            height: 450px;
+            width: 450px;
+            max-width: 95%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: $break-large) {
+  .landing-container {
+    .mission-wrapper {
+      .mission-header {
+        font-size: 1.8rem;
+        font-family: "Muli", sans-serif;
+        font-weight: 700;
+        margin: 0.25rem;
+        color: #1c1c1c;
+        .mission-header-cost {
+          font-family: "Muli", sans-serif;
+          color: #f04149;
+        }
+      }
+      .mission-statement {
+        font-size: 1.4rem;
+        font-weight: 300;
+        margin: 0.25rem auto;
+        max-width: 1000px;
+      }
+    }
+  }
+}

@@ -1,2 +1,2 @@
-export const FETCH_USER = 'fetch-user';
-export const RESET_LINK_MESSAGE= 'reset-link-message';
+export const SUBSCRIBE_EMAIL = 'subscribe-email';
+export const SET_SUCCESS_MESSAGE = 'set-success-message';

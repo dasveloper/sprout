@@ -6,12 +6,10 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
-require('./models/User');
-require('./models/Response');
-require('./models/Form');
-const authRoutes = require('./routes/authRoutes');
-const formRoutes = require('./routes/formRoutes');
-require('./services/passport');
+require('./models/Email');
+
+const emailRoutes = require('./routes/emailRoutes');
+
 
 mongoose.connect(keys.mongoUri);
 
@@ -26,11 +24,8 @@ app.use(
   })
 )
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-formRoutes(app);
-authRoutes(app);
+emailRoutes(app);
 
 
 if (process.env.NODE_ENV === "production") {

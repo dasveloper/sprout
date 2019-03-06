@@ -1,0 +1,85 @@
+.newsletter-wrapper {
+  display: flex;
+  padding: 2.5rem 0;
+  background: #f8f8f8;
+  flex: 1;
+  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .newsletter-cta {
+    font-family: "Muli", sans-serif;
+    color: #4c4c4c;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 1rem;
+    .coming-soon {
+      font-weight: 700;
+    }
+  }
+  .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 600px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    .newsletter-input {
+      padding: 0.75rem 1rem;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      font-size: 1.4rem;
+      outline: none;
+      flex: 1;
+      -webkit-appearance: none;
+      border: none;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      font-family: "Muli", sans-serif;
+
+    }
+    .newsletter-subscribe {
+      padding: 0.75rem 1rem;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-family: "Muli", sans-serif;
+
+      outline: none;
+      -webkit-appearance: none;
+      border: none;
+      background: #18e1c3;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      &:hover {
+        
+          background: darken(#18e1c3, 10%);
+      }
+    }
+  }
+  .newsletter-success{
+    font-size: 1rem;
+    margin: .25rem;
+    font-weight: 700;
+    font-family: "Muli", sans-serif;
+    color: #18e1c3;
+}
+.newsletter-error{
+    font-size: 1rem;
+    margin: .25rem;
+    font-weight: 700;
+    font-family: "Muli", sans-serif;
+    color: #f04149;
+}
+}
+
+@media screen and (min-width: $break-large) {
+  .newsletter-wrapper {
+    .newsletter-cta {
+      font-size: 1.8rem;
+    }
+  }
+}
